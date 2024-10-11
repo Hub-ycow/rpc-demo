@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.hlf'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.5.100'
+
+
+    // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+
+//    // https://mvnrepository.com/artifact/org.apache.catalina/com.springsource.org.apache.catalina
+//    implementation group: 'org.apache.catalina', name: 'com.springsource.org.apache.catalina', version: '7.0.26'
+
+
+
+
+    // https://mvnrepository.com/artifact/com.101tec/zkclient
+    implementation group: 'com.101tec', name: 'zkclient', version: '0.10'
+
+
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
