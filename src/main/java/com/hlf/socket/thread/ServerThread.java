@@ -1,33 +1,45 @@
 package com.hlf.socket.thread;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 
+@Slf4j
 public class ServerThread extends Thread {
     private Socket socket = null;
+    private static ServerSocket serverSocket;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public ServerThread(Socket socket) {
-        this.socket = socket;
+    static {
+        try {
+            serverSocket = new ServerSocket(8088);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ServerThread() {
     }
 
     @Override
     public void run() {
+
         InputStream inputStream = null;
         BufferedReader bufferedReader = null;
-        InputStreamReader inputStreamReader = null;
+        InputStreamReader inputStreamReader;
         OutputStream outputStream = null;
         PrintWriter printWriter = null;
-
         try {
+            socket = serverSocket.accept();
             inputStream = socket.getInputStream();
             inputStreamReader = new InputStreamReader(inputStream);
             bufferedReader = new BufferedReader(inputStreamReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
+                log.info(line);
             }
 
             outputStream = socket.getOutputStream();
@@ -35,10 +47,11 @@ public class ServerThread extends Thread {
             String data = "hello world";
             printWriter.println(data);
             printWriter.flush();
+            log.info("客户端IP:" + socket.getInetAddress());
 
 
         } catch (Exception e) {
-
+            log.error("错误信息：{}", e.getMessage());
         } finally {
             try {
                 if (inputStream != null) {
@@ -57,7 +70,7 @@ public class ServerThread extends Thread {
                     outputStream.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("错误信息：{}", e.getMessage());
             }
 
         }
