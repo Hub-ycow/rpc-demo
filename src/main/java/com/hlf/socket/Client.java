@@ -14,7 +14,6 @@ public class Client {
         OutputStream outputStream = null;
         PrintWriter printWriter = null;
         try {
-
             //获取输出流  向服务器发送信息
             outputStream = socket.getOutputStream();
             printWriter = new PrintWriter(outputStream);

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hlf.consumer.proxy.ProxyFactory;
 import com.hlf.provider.service.HelloService;
 
-public class Application {
+public class ConsumerApplication {
 
     public static void main(String[] args) throws ClassNotFoundException, JsonProcessingException {
 
@@ -16,7 +16,7 @@ public class Application {
                 new Object[]{"hlf"}));
         System.out.println(send);*/
         //要是可以像调用接口一样调用服务就好了
-        HelloService helloService = ProxyFactory.getProxy(HelloService.class);
+        HelloService helloService = ProxyFactory.getProxy(HelloService.class, "V2");
         String result = helloService.sayHello("hlf");
         System.out.println(result);
     }

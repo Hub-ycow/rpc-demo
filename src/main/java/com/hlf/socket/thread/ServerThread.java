@@ -38,13 +38,15 @@ public class ServerThread extends Thread {
             inputStreamReader = new InputStreamReader(inputStream);
             bufferedReader = new BufferedReader(inputStreamReader);
             String line;
+            StringBuilder sb = new StringBuilder();
             while ((line = bufferedReader.readLine()) != null) {
                 log.info(line);
+                sb.append(line);
             }
 
             outputStream = socket.getOutputStream();
             printWriter = new PrintWriter(outputStream);
-            String data = "hello world";
+            String data = sb.toString();
             printWriter.println(data);
             printWriter.flush();
             log.info("客户端IP:" + socket.getInetAddress());
