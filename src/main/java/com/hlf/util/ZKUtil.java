@@ -7,7 +7,14 @@ import org.apache.zookeeper.CreateMode;
 public class ZKUtil {
     private static final ZkClient zkClient = new ZkClient("49.233.245.196:2181");
     public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    public static final String PREFIX = "/";
+    public static final String PREFIX = "/register/";
+
+    static {
+        if (!zkClient.exists("/register")) {
+            zkClient.createPersistent("/register");
+        }
+
+    }
 
     public static <T> boolean createPathIfNotExists(String name, T data) {
         String path = getPath(name);

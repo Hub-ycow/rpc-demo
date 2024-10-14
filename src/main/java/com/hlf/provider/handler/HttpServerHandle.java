@@ -25,7 +25,8 @@ public class HttpServerHandle {
             Class<?> interfaceClass;
             String[] name = invocation.getInterfaceName().split("\\.");
             String className = name[name.length - 1];
-            if ("v2".equals(invocation.getVersion().toLowerCase())) {
+            String version = invocation.getVersion() == null ? "" : invocation.getVersion();
+            if ("v2".equals(version.toLowerCase())) {
                 interfaceClass = InterfaceMapping.get(className + VERSION_V2);
             } else {
                 interfaceClass = InterfaceMapping.get(className + VERSION);

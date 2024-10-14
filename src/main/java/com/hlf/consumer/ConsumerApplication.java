@@ -16,7 +16,7 @@ public class ConsumerApplication {
                 new Object[]{"hlf"}));
         System.out.println(send);*/
         //要是可以像调用接口一样调用服务就好了
-        HelloService helloService = ProxyFactory.getProxy(HelloService.class, "V2");
+        HelloService helloService = ProxyFactory.getProxy(HelloService.class, null);
         String result = helloService.sayHello("hlf");
         System.out.println(result);
     }

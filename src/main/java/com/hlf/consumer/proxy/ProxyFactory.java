@@ -12,8 +12,7 @@ public class ProxyFactory {
     public static <T> T getProxy(Class<? extends T> interfaceClass, String version) {
         return (T) Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class[]{interfaceClass}, (proxy, method, args) -> {
             String name = interfaceClass.getName();
-
-            //URL random = new URL("http", "localhost", 8080, "/");
+            //进行相关api的调用
             List<String> urlList = LocalRegistry.get(interfaceClass.getName());
             URL random = LocalRegistry.random(urlList);
             HttpClient httpClient = new HttpClient();
