@@ -34,6 +34,7 @@ public class LocalRegistry {
     public static void register(String interfaceName, List<URL> urls) {
         serviceMap.put(interfaceName, urls);
 
+        //使用本地磁盘讲数据缓存起来 简单用作注册中心 但是可扩展性不行
        /* try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(serviceMap);
         } catch (Exception e) {

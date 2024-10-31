@@ -32,6 +32,5 @@ public class ProviderApplication {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

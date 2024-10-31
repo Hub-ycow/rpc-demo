@@ -21,7 +21,6 @@ public class ProxyFactory {
                     method.getParameterTypes(),
                     args, version));
             return send;
-
         });
     }
 }

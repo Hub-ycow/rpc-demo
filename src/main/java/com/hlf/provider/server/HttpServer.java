@@ -40,6 +40,8 @@ public class HttpServer {
 
         //注册servlet进行请求的处理
         tomcat.addServlet(contextPath, "dispatcher", new DispatcherServlet());
+        // tomcat.addServlet(contextPath, "dispatcher2", new DefinedServlet());
+        // context.addServletMappingDecoded("/*", "dispatcher2");
         context.addServletMappingDecoded("/*", "dispatcher");
         try {
             tomcat.start();
