@@ -1,6 +1,6 @@
 package com.hlf.provider.service.impl;
 
-import com.hlf.provider.service.HelloService;
+import com.hlf.rpc.HelloService;
 
 public class HelloServiceImplV2 implements HelloService {
     @Override

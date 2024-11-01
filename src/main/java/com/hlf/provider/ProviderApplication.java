@@ -3,7 +3,7 @@ package com.hlf.provider;
 import com.hlf.provider.mapping.InterfaceMapping;
 import com.hlf.provider.registry.LocalRegistry;
 import com.hlf.provider.server.HttpServer;
-import com.hlf.provider.service.HelloService;
+import com.hlf.rpc.HelloService;
 import com.hlf.provider.service.impl.HelloServiceImpl;
 import com.hlf.provider.service.impl.HelloServiceImplV2;
 
